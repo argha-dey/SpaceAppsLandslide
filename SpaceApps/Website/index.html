@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Landside Information</title>
+  <meta name="description" content="Real time information about the safety of a given landscape">
+  <meta name="keywords" content="Space, Apps, NASA">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link rel="icon" 
+      type="image/png" 
+      href="images/pict-1.png">
+</head>
+<body>
+<META HTTP-EQUIV="refresh" CONTENT="20">
+<div class="wrapper">
+<div class="warpper-top">
+<div class="top-sh1"></div>
+<div class="banner-area">
+<div class="banner-left-sh1"></div>
+<div class="banner-bg1">
+<div class="banner-txt">
+<div class="banner-txt-left">
+<div class="banner-txt-right">
+</div>
+</div>
+<div class="nav-area">
+<ul class="navigation">
+  <li><a href="#">Home</a></li>
+  <li><a href="About.html">About us</a></li>
+</ul>
+</div>
+<div class="nav-sh"></div>
+</div>
+<div class="banner-right-sh1"></div>
+</div>
+</div>
+<div class="warpper-mid">
+<div class="mid-gap"></div>
+<div class="mid-left">
+<h2 style="padding: 20px 0px 5px 30px;">RT- <span>results for landslide</span></h2>
+<p class="txt-2" style="padding: 10px 0px 5px 30px;"> 
+<table border="1" style="margin:30px">
+  <tr> <td> <script type="text/javascript">
+  var currentTime = new Date();
+  var month = currentTime.getMonth() + 1;
+  var day = currentTime.getDate();
+  var year = currentTime.getFullYear();
+  var hour = currentTime.getHours();
+  var minutes = currentTime.getMinutes();
+  var seconds = currentTime.getSeconds();
+  if(month.toString().length == 1) {
+        month = '0'+month;
+    }
+    if(day.toString().length == 1) {
+        day = '0'+day;
+    }   
+    if(hour.toString().length == 1) {
+        hour = '0'+hour;
+    }
+    if(minutes.toString().length == 1) {
+        minutes = '0'+minutes;
+    }
+    if(seconds.toString().length == 1) {
+        seconds = '0'+seconds;
+    }   
+  document.write(month + "/" + day + "/" + year + "   |   " + hour + ":" + minutes + ":"+ seconds);
+  </script></td>
+  <td> <script type="text/javascript">
+  function show_image(src, width, height, alt) {
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = width;
+    img.height = height;
+    img.alt = alt;
+   // This next line will just add it to the <body> tag
+    document.body.appendChild(img);}
+  file = fopen(getScriptPath("Input.txt"), 0);.
+  file_length = flength(file);.
+  temp = fread(file, file_length);.	
+  var1 = parseFloat(temp);
+  if (var1 > 3) { show_image('images/download.jpg', 276, 110, 'Safe') };
+  else if (var1 = 3) { show_image('images/download.jpg', 276, 110, 'Moderate safe') };
+  else { show_image('images/download.jpg', 276, 110, 'Unsafe') }; </script></td></tr>
+</table></p>
+</div>
+<div class="mid-right">
+<div class="topround-bg1">&nbsp;</div>
+<div class="midround-bg1">
+<h4 style="padding: 5px 50px 5px 54px;">About</h4>
+<div style="padding: 10px 0px 10px 54px;"><img src="images/pict-1.png" alt="#" border="0"></div>
+<p class="txt-2" style="padding: 10px 50px 10px 54px;"> Landslides occur due to the rise of the water level in the ground, 
+which causes a reduction of the soil strength. This system aims to give early warnings on mobile phones, regarding the hazard of the landslide.<br>
+</p>
+
+<div class="mainmenu">
+<ul>
+  
+</ul>
+</div>
+
+</div>
+<div class="botround-bg1">&nbsp;</div>
+</div>
+<div class="mid-gap"></div>
+</div>
+<div class="warpper-bot">
+<div class="footer-left">
+<ul class="footer-nav">
+<p class="footer-txt">&copy;
+Designed for <a class="footer-link" target="_blank"
+ href="https://2014.spaceappschallenge.org/">NASA Space Apps Challenge 2014</a>
+</p>
+</ul>
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

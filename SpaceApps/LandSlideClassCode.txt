@@ -1,0 +1,166 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace LandSlideClass
+{
+    public class Analysis
+    {
+        //private double
+        private double locW1, locW2, locW3, locW4, locW5, locW6, locW7;
+        private int locHour, locMinute;
+        private double[] arrW1 = new double[6];
+        private double[] arrW2 = new double[6];
+        private double[] arrW3 = new double[6];
+        private double[] arrW4 = new double[6];
+        private double[] arrW5 = new double[6];
+        private double[] arrW6 = new double[6];
+        private double[] arrW7 = new double[6];
+        private int[] arrHour = new int[6];
+        private int[] arrMinute = new int[6];
+        private double locFactorSafety;
+
+        public double FactorSafety
+        {
+            get { return locFactorSafety; }
+            set { locFactorSafety = value; }
+        }
+        public int Hour
+        {
+            get { return locHour; }
+            set { locHour = value; }
+        }
+        public int Minute
+        {
+            get { return locMinute; }
+            set { locMinute = value; }
+        }
+        public void CreateData()
+        {
+            arrW1[0] = 0.5;
+            arrW2[0] = 0.5;
+            arrW3[0] = 0.5;
+            arrW4[0] = 0.5;
+            arrW5[0] = 0.5;
+            arrW6[0] = 0.5;
+            arrW7[0] = 0.5;
+            arrHour[0] = 16;
+            arrMinute[0] = 00;
+
+            arrW1[1] = 1;
+            arrW2[1] = 1;
+            arrW3[1] = 1;
+            arrW4[1] = 1;
+            arrW5[1] = 1;
+            arrW6[1] = 1;
+            arrW7[1] = 1;
+            arrHour[1] = 16;
+            arrMinute[1] = 30;
+
+            arrW1[2] = 2;
+            arrW2[2] = 2;
+            arrW3[2] = 2;
+            arrW4[2] = 2;
+            arrW5[2] = 2;
+            arrW6[2] = 2;
+            arrW7[2] = 2;
+            arrHour[2] = 17;
+            arrMinute[2] = 00;
+
+            arrW1[3] = 3;
+            arrW2[3] = 3;
+            arrW3[3] = 3;
+            arrW4[3] = 3;
+            arrW5[3] = 3;
+            arrW6[3] = 3;
+            arrW7[3] = 3;
+            arrHour[3] = 17;
+            arrMinute[3] = 30;
+
+            arrW1[4] = 9;
+            arrW2[4] = 9;
+            arrW3[4] = 9;
+            arrW4[4] = 9;
+            arrW5[4] = 9;
+            arrW6[4] = 9;
+            arrW7[4] = 9;
+            arrHour[4] = 18;
+            arrMinute[4] = 00;
+
+            arrW1[5] = 10;
+            arrW2[5] = 10;
+            arrW3[5] = 10;
+            arrW4[5] = 10;
+            arrW5[5] = 10;
+            arrW6[5] = 10;
+            arrW7[5] = 10;
+            arrHour[5] = 18;
+            arrMinute[5] = 30;
+        }
+        public void Run(int Series)
+        {
+            double Weight1 = 22.4;
+            double Weight2 = 294.4;
+            double Weight3 = 435.2;
+            double Weight4 = 435.2;
+            double Weight5 = 390.4;
+            double Weight6 = 268.8;
+            double Weight7 = 66.6;
+            double Angle1 = 70;
+            double Angle2 = 54;
+            double Angle3 = 38;
+            double Angle4 = 24;
+            double Angle5 = 12;
+            double Angle6 = 0;
+            double Angle7 = -8;
+            double DL1 = 2.924;
+            double DL2 = 6.803;
+            double DL3 = 5.076;
+            double DL4 = 4.376;
+            double DL5 = 4.090;
+            double DL6 = 4.0;
+            double DL7 = 3.232;
+            double SumDL;
+            double u1, u2, u3, u4, u5, u6, u7;
+            double Cohesion = 50;
+            double AngleFriction = 35;
+            double ResistanceCohesion;
+            double ResistanceFriction;
+            double Moment;
+
+            locW1 = arrW1[Series];
+            locW2 = arrW2[Series];
+            locW3 = arrW3[Series];
+            locW4 = arrW4[Series];
+            locW5 = arrW5[Series];
+            locW6 = arrW6[Series];
+            locW7 = arrW7[Series];
+            locHour = arrHour[Series];
+            locMinute = arrMinute[Series];
+
+            u1 = locW1 * 10;
+            u2 = locW2 * 10;
+            u3 = locW3 * 10;
+            u4 = locW4 * 10;
+            u5 = locW5 * 10;
+            u6 = locW6 * 10;
+            u7 = locW7 * 10;
+
+            SumDL = DL1 + DL2 + DL3 + DL4 + DL5 + DL6 + DL7;
+
+            Moment = Weight1 * Math.Sin((Angle1 / 180) * Math.PI) + Weight2 * Math.Sin((Angle2 / 180) * Math.PI) + Weight3 * Math.Sin((Angle3 / 180) * Math.PI) + Weight4 * Math.Sin((Angle4 / 180) * Math.PI) + Weight5 * Math.Sin((Angle5 / 180) * Math.PI) + Weight6 * Math.Sin((Angle6 / 180) * Math.PI) + Weight7 * Math.Sin((Angle7 / 180) * Math.PI);
+            ResistanceCohesion = SumDL * Cohesion;
+            ResistanceFriction = (Weight1 * Math.Cos((Angle1 / 180) * Math.PI) - u1 * DL1) +
+                (Weight2 * Math.Cos((Angle2 / 180) * Math.PI) - u2 * DL2) +
+                (Weight3 * Math.Cos((Angle3 / 180) * Math.PI) - u3 * DL3) +
+                (Weight4 * Math.Cos((Angle4 / 180) * Math.PI) - u4 * DL4) +
+                (Weight5 * Math.Cos((Angle5 / 180) * Math.PI) - u5 * DL5) +
+                (Weight6 * Math.Cos((Angle6 / 180) * Math.PI) - u6 * DL6) +
+                (Weight7 * Math.Cos((Angle7 / 180) * Math.PI) - u7 * DL7);
+
+            FactorSafety = (ResistanceCohesion + ResistanceFriction * Math.Tan((AngleFriction / 180) * Math.PI)) / Moment;
+        }
+    }
+
+}
