@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	double checkValue =2;
+	double checkValue =0;
 	double latitude = 0;
     double longitude = 0;
 //	GPSTracker gps = new GPSTracker(this);
@@ -74,6 +74,7 @@ public class MainActivity extends Activity {
     		image.setImageResource(R.drawable.green);
     		textSafety.setText("Location is safe");
     	}
+    	checkValue += 1;
     }
 
 
