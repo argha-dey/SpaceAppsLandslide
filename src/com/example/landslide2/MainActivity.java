@@ -1,21 +1,17 @@
 package com.example.landslide2;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.SocketException;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -62,60 +58,8 @@ public class MainActivity extends Activity {
     	ImageView image = (ImageView) findViewById(R.id.imgBulb);
         // Do something in response to button
 //    	boolean error = false;
-//    	ftpDownload ftpDown = new ftpDownload();
-//    	ftpDown.download("172.20.186.177","kyriakos","spooky123","landslide/data.txt",new File("/"));
-//    	FTPClient mFTPClient = new FTPClient(); 
-    	//try { 
-	        // connecting to the host  
-	       // mFTPClient.connect("172.20.186.177", 21);  
-	//        boolean status = mFTPClient.login("FTP_UID", "FTP_PW");  
-	         // now check the reply code, if positive mean connection success  
-	       /* if (FTPReply.isPositiveCompletion(mFTPClient.getReplyCode())) {  
-	              
-	        	
-	        	int reply = mFTPClient.getReplyCode();
-	
-	            if(!FTPReply.isPositiveCompletion(reply)) {
-	            	mFTPClient.disconnect();
-	              System.err.println("FTP server refused connection.");
-	              System.exit(1);
-	            }
-	            
-	             mFTPClient.setFileType(FTP.ASCII_FILE_TYPE);  
-	             mFTPClient.enterLocalPassiveMode(); 
-	             
-	             FileOutputStream desFileStream = new FileOutputStream("./");  
-	             boolean status;
-	             while(!mFTPClient.retrieveFile("./", desFileStream)) {
-	             }
-	             desFileStream.close();
-	        } */
-    	/*} catch(IOException e) {
-    		error = true;
-    		e.printStackTrace();
-	    } finally {
-	    	if(mFTPClient.isConnected()) {
-	    		try {
-	    			mFTPClient.disconnect();
-	    		} catch(IOException ioe) {
-	    			// do nothing
-	    		}
-	    	}
-	    	System.exit(error ? 1 : 0);
-	    }*/
-    	
-//    	try {
-//    	    // Create a URL for the desired page
-//    	    URL url = new URL("http://kyriakos-pc/data.txt");
-//
-//    	    // Read all the text returned by the server
-//    	    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-////    	    String str = in.readLine();
-////    	    checkValue = Double.parseDouble(str);
-////    	    in.close();
-//    	} catch (MalformedURLException e) {
-//    	} catch (IOException e) {
-//    	}
+    	String test;
+//    	new ftpDownload().execute();
     	
     	TextView textSafety = (TextView) findViewById(R.id.safetyLabel);
     	if (checkValue < 1) {
