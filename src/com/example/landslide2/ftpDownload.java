@@ -52,17 +52,21 @@ public class ftpDownload {
          {
             URL url = new URL( sb.toString() );
             URLConnection urlc = url.openConnection();
+            if (urlc.connect()) {
+            	
+            
 
-            bis = new BufferedInputStream( urlc.getInputStream() );
-//          bos = new BufferedOutputStream(new FileOutputStream(destination.getName()));
-
-            /*int i;
-            while ((i = bis.read()) != -1)
-            {
-               bos.write( i );
-            }*/
+	            //bis = new BufferedInputStream( urlc.getInputStream() );
+	//          bos = new BufferedOutputStream(new FileOutputStream(destination.getName()));
+	
+	            /*int i;
+	            while ((i = bis.read()) != -1)
+	            {
+	               bos.write( i );
+	            }*/
+            }
          }
-         finally {}/*
+         finally {}
          {
             if (bis != null)
                try
@@ -82,7 +86,7 @@ public class ftpDownload {
                {
                   ioe.printStackTrace();
                }
-         }*/
+         }
       }
       else
       {
