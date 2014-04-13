@@ -1,19 +1,21 @@
 package com.example.landslide2;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.SocketException;
-import java.util.Set;
-
-import org.apache.commons.net.ftp.FTP;
-import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPReply;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +28,9 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
 	double checkValue =2;
-	GPSTracker gps = new GPSTracker(this);
+	double latitude = 0;
+    double longitude = 0;
+//	GPSTracker gps = new GPSTracker(this);
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +43,27 @@ public class MainActivity extends Activity {
                     .commit();
         }
         
-    	if(!gps.canGetLocation()){
-	        // can't get location
-	        // GPS or Network is not enabled
-	        // Ask user to enable GPS/network in settings
-	        gps.showSettingsAlert();
-    	}
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = cm
+				.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+		if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
+			String provider = LocationManager.NETWORK_PROVIDER;
+			LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+//			String provider = service.getBestProvider(criteria, false);
+			Location location = service.getLastKnownLocation(provider);
+			if (location != null) {
+				longitude = location.getLongitude();
+				latitude = location.getLatitude();
+			}
+		}
     }
     
     public void refresh(MenuItem item) throws SocketException, IOException {
     	ImageView image = (ImageView) findViewById(R.id.imgBulb);
         // Do something in response to button
 //    	boolean error = false;
-    	ftpDownload ftpDown = new ftpDownload();
-    	ftpDown.download("172.20.186.177","kyriakos","spooky123","landslide/data.txt",new File("/"));
+//    	ftpDownload ftpDown = new ftpDownload();
+//    	ftpDown.download("172.20.186.177","kyriakos","spooky123","landslide/data.txt",new File("/"));
 //    	FTPClient mFTPClient = new FTPClient(); 
     	//try { 
 	        // connecting to the host  
@@ -92,6 +103,20 @@ public class MainActivity extends Activity {
 	    	}
 	    	System.exit(error ? 1 : 0);
 	    }*/
+    	
+//    	try {
+//    	    // Create a URL for the desired page
+//    	    URL url = new URL("http://kyriakos-pc/data.txt");
+//
+//    	    // Read all the text returned by the server
+//    	    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+////    	    String str = in.readLine();
+////    	    checkValue = Double.parseDouble(str);
+////    	    in.close();
+//    	} catch (MalformedURLException e) {
+//    	} catch (IOException e) {
+//    	}
+    	
     	TextView textSafety = (TextView) findViewById(R.id.safetyLabel);
     	if (checkValue < 1) {
     		image.setImageResource(R.drawable.red);
@@ -123,8 +148,6 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_info) {
-        	double latitude = gps.getLatitude();
-            double longitude = gps.getLongitude();
         	Context context = getApplicationContext();
         	CharSequence text = "Factor of Safety: " + Double.toString(checkValue) + "\n Latitude: " + latitude + "\n Longitude: " + longitude;
         	int duration = Toast.LENGTH_SHORT;
