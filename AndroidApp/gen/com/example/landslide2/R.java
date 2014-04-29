@@ -30,21 +30,21 @@ public final class R {
         public static final int orange=0x7f020005;
         public static final int red=0x7f020006;
         public static final int refresh=0x7f020007;
-        public static final int refresh2=0x7f020008;
-        public static final int test=0x7f020009;
-        public static final int test1=0x7f02000a;
-        public static final int test2=0x7f02000b;
+        public static final int test=0x7f020008;
+        public static final int test1=0x7f020009;
+        public static final int test2=0x7f02000a;
     }
     public static final class id {
-        public static final int action_info=0x7f080003;
-        public static final int action_refresh=0x7f080004;
+        public static final int action_info=0x7f080004;
+        public static final int action_refresh=0x7f080005;
         public static final int container=0x7f080000;
-        public static final int imgBulb=0x7f080001;
-        public static final int safetyLabel=0x7f080002;
+        public static final int imgBulb=0x7f080002;
+        public static final int safetyLabel=0x7f080001;
+        public static final int spinner1=0x7f080003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int fragment_main=0x7f030001;
+        public static final int spinner_item=0x7f030001;
     }
     public static final class menu {
         public static final int main=0x7f070000;
